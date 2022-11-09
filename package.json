@@ -1,0 +1,46 @@
+{
+  "name": "show-n-tell-2022",
+  "version": "1.0.0",
+  "description": "Demo Project for Async's International Show 'n' Tell 2022",
+  "main": "src/index.tsx",
+  "scripts": {
+    "start": "tsb serve",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "type-check": "tsc --project tsconfig.json --noEmit",
+    "test": "npm run type-check && npm run format-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakesidsmith/show-n-tell-2022.git"
+  },
+  "keywords": [
+    "async",
+    "show",
+    "tell",
+    "international",
+    "form",
+    "schemas",
+    "inferred",
+    "inference",
+    "typescript",
+    "types"
+  ],
+  "author": "Jake 'Sid' Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakesidsmith/show-n-tell-2022/issues"
+  },
+  "homepage": "https://github.com/jakesidsmith/show-n-tell-2022#readme",
+  "dependencies": {
+    "@jakesidsmith/tsb": "^0.2.3",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
