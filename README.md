@@ -13,7 +13,9 @@ This demo is available at: http://github.com/jakesidsmith/show-n-tell-2022
 
 This talk covers using schemas to generate forms (with React) and the corresponding TypeScript interfaces. Using schemas you can easily make updates to your apps, keep your forms consistent, keep your TypeScript server in sync with your forms, and allow your users (or clients) to build their own forms.
 
-I'm currently writing a blog post on this, so I'll add a link to that at a later date.
+BUT, that's not all you can use schemas and this kind of type inference for, for example [tsurl](https://github.com/jakesidsmith/tsurl) uses schemas and type inference to handle constructing and deconstructing URLs in a type-safe way.
+
+I'm currently writing a blog post on this kinda schema stuff, so I'll add a link to that at a later date.
 
 ## Building and running the project
 
