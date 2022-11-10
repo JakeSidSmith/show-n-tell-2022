@@ -7,7 +7,7 @@
 - Twitter: [@jakesidsmith](https://twitter.com/jakesidsmith)
 - GitHub: https://github.com/jakesidsmith/
 
-This demo is available at: http://github.com/jakesidsmith/show-n-tell-2022
+This demo is available at: https://github.com/jakesidsmith/show-n-tell-2022
 
 ## Intro
 
