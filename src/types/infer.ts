@@ -26,7 +26,10 @@ export type InferFieldValue<F, N extends string> = F extends FieldText<N>
 // export type InferFormInterface<S extends Schema> =
 //   S extends readonly (infer F)[]
 //     ? {
-//         [FN in F extends FieldAny<infer N> ? N : never]: InferFieldValue<F, FN>;
+//         [NoN in F extends FieldAny<infer N> ? N : never]: InferFieldValue<
+//           F,
+//           NoN
+//         >;
 //       }
 //     : never;
 
@@ -34,15 +37,15 @@ export type InferFormInterface<S extends Schema> =
   S extends readonly (infer F)[]
     ? Expand<
         {
-          [FN in F extends FieldAny<infer N> & { required: true }
+          [NoN in F extends FieldAny<infer N> & { required: true }
             ? N
-            : never]: InferFieldValue<F, FN>;
+            : never]: InferFieldValue<F, NoN>;
         } & {
-          [Field in F extends FieldAny<infer N>
+          [NoN in F extends FieldAny<infer N>
             ? F extends { required: true }
               ? never
               : N
-            : never]?: InferFieldValue<F, Field>;
+            : never]?: InferFieldValue<F, NoN>;
         }
       >
     : never;
