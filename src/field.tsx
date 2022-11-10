@@ -1,26 +1,26 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { FieldAny, FieldType } from './types/fields';
+import { FieldAny, FieldType, Schema } from './types/fields';
 import { InferFieldValue, InferFormInterface } from './types/infer';
 
 interface FieldProps<
-  Schema extends readonly FieldAny<string>[],
+  S extends Schema,
   Field extends FieldAny<N>,
   N extends string
 > {
   field: Field;
   value: InferFieldValue<Field, N> | undefined;
-  setValues: Dispatch<SetStateAction<Partial<InferFormInterface<Schema>>>>;
+  setValues: Dispatch<SetStateAction<Partial<InferFormInterface<S>>>>;
 }
 
 export const Field = <
-  Schema extends readonly FieldAny<string>[],
+  S extends Schema,
   Field extends FieldAny<N>,
   N extends string
 >({
   field,
   value,
   setValues,
-}: FieldProps<Schema, Field, N>) => {
+}: FieldProps<S, Field, N>) => {
   const onChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {

@@ -1,22 +1,22 @@
 import React, { FormEvent, Fragment, useState } from 'react';
 import { Field } from './field';
-import { FieldAny } from './types/fields';
+import { Schema } from './types/fields';
 import { InferFormInterface } from './types/infer';
 import { ValidateFunction, validate } from './validate';
 
-interface FormProps<Schema extends readonly FieldAny<string>[]> {
-  schema: Schema;
-  initialValues?: Partial<InferFormInterface<Schema>>;
+interface FormProps<S extends Schema> {
+  schema: S;
+  initialValues?: Partial<InferFormInterface<S>>;
 }
 
-export const Form = <Schema extends readonly FieldAny<string>[]>({
+export const Form = <S extends Schema>({
   schema,
   initialValues = {},
-}: FormProps<Schema>) => {
+}: FormProps<S>) => {
   const [values, setValues] =
-    useState<Partial<InferFormInterface<Schema>>>(initialValues);
+    useState<Partial<InferFormInterface<S>>>(initialValues);
 
-  const validateFormValues: ValidateFunction<Schema> = validate;
+  const validateFormValues: ValidateFunction<S> = validate;
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();

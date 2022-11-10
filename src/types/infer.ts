@@ -4,6 +4,7 @@ import {
   FieldNumber,
   FieldSelect,
   FieldText,
+  Schema,
 } from './fields';
 
 export type Expand<T extends Record<string, any>> = {
@@ -22,28 +23,26 @@ export type InferFieldValue<F, N extends string> = F extends FieldText<N>
 
 /* Without optional fields (all values required by default) */
 
-// export type InferFormInterface<T extends readonly FieldAny<string>[]> =
-//   T extends readonly (infer AllFields)[]
+// export type InferFormInterface<S extends Schema> =
+//   S extends readonly (infer F)[]
 //     ? {
-//         [Field in AllFields extends FieldAny<infer N>
-//           ? N
-//           : never]: InferFieldValue<AllFields, Field>;
+//         [FN in F extends FieldAny<infer N> ? N : never]: InferFieldValue<F, FN>;
 //       }
 //     : never;
 
-export type InferFormInterface<T extends readonly FieldAny<string>[]> =
-  T extends readonly (infer AllFields)[]
+export type InferFormInterface<S extends Schema> =
+  S extends readonly (infer F)[]
     ? Expand<
         {
-          [Field in AllFields extends FieldAny<infer N> & { required: true }
+          [FN in F extends FieldAny<infer N> & { required: true }
             ? N
-            : never]: InferFieldValue<AllFields, Field>;
+            : never]: InferFieldValue<F, FN>;
         } & {
-          [Field in AllFields extends FieldAny<infer N>
-            ? AllFields extends { required: true }
+          [Field in F extends FieldAny<infer N>
+            ? F extends { required: true }
               ? never
               : N
-            : never]?: InferFieldValue<AllFields, Field>;
+            : never]?: InferFieldValue<F, Field>;
         }
       >
     : never;

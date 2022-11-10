@@ -33,3 +33,5 @@ export type FieldAny<N extends string> =
   | FieldNumber<N>
   | FieldCheckbox<N>
   | FieldSelect<N>;
+
+export type Schema = readonly FieldAny<string>[];
