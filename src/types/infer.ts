@@ -7,7 +7,7 @@ import {
   Schema,
 } from './fields';
 
-export type Expand<T extends Record<string, any>> = {
+export type Merge<T extends Record<string, any>> = {
   [P in keyof T]: T[P];
 };
 
@@ -35,7 +35,7 @@ export type InferFieldValue<F, N extends string> = F extends FieldText<N>
 
 export type InferFormInterface<S extends Schema> =
   S extends readonly (infer F)[]
-    ? Expand<
+    ? Merge<
         {
           [NoN in F extends FieldAny<infer N> & { required: true }
             ? N
